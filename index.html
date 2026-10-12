@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>第63回オリエンテーリング二本松大会大会</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <!-- 外部CSSの読み込み -->
+  <link rel="stylesheet" href="test2.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="title">第63回オリエンテーリング二本松大会</div>
+      <nav aria-label="主要メニュー">
+        <div class="nav-list" role="tablist">
+          <button onclick="navigate('home')" role="tab" aria-selected="true">ホーム</button>
+          <button onclick="navigate('overview')" role="tab">大会概要</button>
+          <button onclick="navigate('rules')" role="tab">要項</button>
+          <button onclick="navigate('startlist')" role="tab">スタートリスト</button>
+          <button onclick="navigate('entry')" role="tab">エントリー</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="hero"></section>
+
+  <main class="container">
+    <!-- ホーム -->
+    <section id="home" class="page active">
+      <div class="grid">
+        <div>
+          <div class="card announce">
+            <h2>お知らせ</h2>
+            <p>HPを開設しました</p>
+          </div>
+        </div>
+          
+        <aside class="aside">
+
+          <div class="card">
+            <h2>問い合わせ</h2>
+            <p>大会全般</p>
+            <p>二本松オリエンテーリング　七宮勝広</p>
+            <p>jr7lhz@d6.dion.ne.jp</p>
+            <p>　</p>
+            <p>エントリーに関して</p>
+            <p>福島大学オリエンテーリング部</p>
+            <p>nihonmatsutaikai63@gmail.com</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 大会概要 -->
+    <section id="overview" class="page">
+      <div class="card">
+        <h2>大会概要</h2>
+        <p><strong>開催日：</strong>2026年11月23日（月曜・祝日）</p>
+        <p><strong>受付時間：</strong>9:00〜10:00</p>
+        <p><strong>スタート：</strong>10:30予定</p>
+        <p><strong>場所：</strong>二本松市　安達太良体育館</p>
+
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3160.8699774324077!2d140.355286!3d37.605219!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a9fe5e2d5ac15%3A0xdf37060998eaa65a!2z5pel5pys44CB44CSOTY0LTAwNzQg56aP5bO255yM5LqM5pys5p2-5biC5bKz5rip5rOJ77yR5LiB55uu77yR77yZ77yX4oiS77yR!5e0!3m2!1sja!2sus!4v1759508772041!5m2!1sja!2sus" 
+            width="100%" 
+            height="300" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+     <!-- 要項 -->
+    <section id="rules" class="page">
+      <div class="card" id="rules-content">
+      <!-- JSでスマホ／PCに応じた表示をここに切り替えます -->
+      </div>
+    </section>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const rulesContent = document.getElementById('rules-content');
+      const pdfUrl = 'youkou.pdf'; // ← 実際のPDFファイルのURLに変更
+    
+      // スマホかどうかを判定（簡易版）
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // 📱 スマホ用：リンクをクリックすると新しいタブでPDFを開く
+      rulesContent.innerHTML = `
+        <p>
+          <a href="${pdfUrl}" target="_blank" rel="noopener" style="text-decoration: underline; color: #0066cc;">
+            📄 PDFファイルを新しいタブで開く
+          </a>
+        </p>
+      `;
+    } else {
+        // 💻 PC用：iframeで埋め込み表示
+        rulesContent.innerHTML = `
+          <div class="pdf-viewer">
+            <iframe 
+              src="${pdfUrl}" 
+              style="width:100%; height:600px; border:none;">
+            </iframe>
+          </div>
+        `;
+      }
+    });
+    </script>
+
+    <!-- スタートリスト -->
+   <section id="startlist" class="page">
+  <div class="card">
+    <h2>順次公開予定</h2>
+
+    <!-- ここにスマホ/PCで切り替えるPDF枠を設置 -->
+    <div id="startlist-container"></div>
+  </div>
+</section>
+ <!-- エントリー -->
+    <section id="entry" class="page">
+      <div class="card">
+        <h2>エントリー</h2>
+        <p>以下のリンクからエントリーシートのダウンロードをお願いします。</p>
+        <p>　(excel形式のため、PCからのダウンロードを推奨します)</p>
+        <p>ご記入後、nihonmatsutaikai62@gmail.comまで送信してください。</p>
+        <p>また、郵送やfaxでも参加申し込みが可能です。詳しくは大会要項をご確認ください。</p>
+        </p>
+        <div class="excel-download-list">
+          <a href="file/entrysheet_group.xlsx" download class="excel-link">グループ用エントリーシート</a>
+          <a href="file/entrysheet_individual.xlsx" download class="excel-link">個人用エントリーシート</a>
+        </div>
+        <p>　</p>
+        <p>※事前申し込みで不参加の場合、キャンセルとなります。キャンセル料は不要です。</p>
+        <p>※メールでのエントリーに関してご不明な点等ございましたら、上記のアドレスにお問い合わせください。</p>
+      </div>
+    </section>
+  </main>
+
+  
+
+  <script>
+  function navigate(id){
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(p=>p.classList.remove('active'));
+    const target = document.getElementById(id);
+    if(target) target.classList.add('active');
+
+    // ヒーロー画像の表示切替
+    const hero = document.getElementById('hero');
+    if(id === 'home'){
+      hero.classList.add('show');
+    } else {
+      hero.classList.remove('show');
+    }
+
+      // ヘッダー背景の表示切替
+    const header = document.querySelector('header');
+    if(id === 'home'){
+      header.classList.add('home-header');   // ホームの時だけ半透明背景を表示
+    } else {
+      header.classList.remove('home-header'); // 他ページでは非表示
+    }
+
+    // update aria-selected
+    const tabs = document.querySelectorAll('nav .nav-list button');
+    tabs.forEach(btn=>{
+      btn.setAttribute('aria-selected', btn.getAttribute('onclick').includes("'" + id + "'") ? 'true' : 'false');
+    });
+
+    // scroll to top
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const hash = location.hash.replace('#','') || 'home';
+    navigate(hash);
+  });
+
+
+
+</script>
+
+<script>
+  function loadPdfForDevice(containerId, pdfPath) {
+    const container = document.getElementById(containerId);
+
+    // スマホ判定
+    const isMobile = /iPhone|Android.+Mobile/.test(navigator.userAgent);
+
+    if (isMobile) {
+      // スマホ：新しいタブで PDF を開く
+      container.innerHTML = `
+        <p>
+          <a href="${pdfPath}" target="_blank" class="pdf-button" rel="noopener">
+            📄 スタートリストを開く（PDF）
+          </a>
+        </p>
+      `;
+    } else {
+      // PC：埋め込み表示
+      container.innerHTML = `
+        <iframe 
+          src="${pdfPath}" 
+          width="100%" 
+          height="600px" 
+          style="border:none;">
+        </iframe>
+      `;
+    }
+  }
+
+  // スタートリストの PDF を読み込み　一時的にコメントアウト
+ // document.addEventListener("DOMContentLoaded", () => {
+ //   loadPdfForDevice("startlist-container", "スタートリスト.pdf");
+ // });
+</script>
+
+</body>
+</html>
